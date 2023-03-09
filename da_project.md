@@ -44,7 +44,11 @@ $$Retention \space Rate =\Sigma_{i,j}^n \frac{AU_j}{DAU_i} \times 100\\% $$
 - Segment the users into groups by the metrics.
 - Idenitfy significant difference in retention rate between groups.
 - Look for user behavior patterns that associated with the user status.
-- Find the reason behind
+- Hypothesis 1:(Players who invent more in the specific system would be more likely to reach the user status)
+- Validae the hypothesis 1
+- Hypothesis 2:(Players who have good feedback in dungeon playing during the first 30mins of first engagement would be more likely to reach the user status)
+- Validate the hypothesis 2:(define the experience metric, define the good experience, it turns out 30mins is not main point but most users leaves in 30mins)
+- Conclusion:(If players get good feedback in dungeon playing, they would be more likely to be back in the next day. This feedback would be better happened in the first 30mins of first engagement.)
 
 
 #### The key metrics
