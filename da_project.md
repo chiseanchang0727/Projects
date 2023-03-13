@@ -1,8 +1,21 @@
-# Increasing the retention rate by analyzing user behavior
 
-## Outlines
 
-## What is the problem?
+# Outlines
+
+1. What is the problem?
+
+2. What is the project goal?
+
+3. Analysis procedures
+
+4. Identify key metrics
+
+5. Insights from hypotheses and validation
+
+6. Conclusion
+
+
+# What is the problem?
 
 - The revenue of our product after launching is lower than the A-class products.
 
@@ -16,9 +29,9 @@ $$AU_n = \Sigma_{i,j}^{n}DAU_i\times R_{ij} $$
 
 $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$ 
 - $R_{ij}$ is the retention rate in $j$ th day where the users frist engage in $i$ th day.
-- Increasing $DAU$ is important but it will not be covered in this project.
+- $DAU$ is related with onboarding processand advertisment strategies, which will not be covered in this project.
 
-### Problem identification on retention rate or ARPU
+## Problem identification on retention rate or ARPU
 
 - Following picture is the comparsion of retention rate and ARPU between our product and A-class products.
 
@@ -35,56 +48,158 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
 <img src="https://user-images.githubusercontent.com/113814545/223676733-2bd96b3f-7926-4ed2-a07b-d67d7155d194.png" width="550">
 
 
-- So the problem that result in lower revenue would be the low retention rate in first day.
+- So the problem that result in lower revenue would be the low R1.
 
 
-## What is the project goal?
+# What is the project goal?
 
-- Increasing the retention rate in Day1(R1) by analyzing the user behavior.
-
-
-### How to define success for this project?
-
-- Figure out what user behavior would lead higher retention rate.
-- Figure out the insight from the user behavior.
-- Provide suggestion that stakeholder can accept.
-- Run a A/B test to show difference.
-
-## Analysis procedures
-
-- Identify the user status by key metrics that relevant to R1.
-- Segment the users into groups by the metrics.
-- Idenitfy significant difference in retention rate between groups.
-- Look for user behavior patterns that associated with the user status.
-- Hypothesis 1:(Players who invent more in the specific system would be more likely to reach the user status)
-- Validae the hypothesis 1
-- Hypothesis 2:(Players who have good feedback in dungeon playing during the first 30mins of first engagement would be more likely to reach the user status)
-- Validate the hypothesis 2:(define the experience metric, define the good experience, it turns out 30mins is not main point but most users leaves in 30mins)
-- Conclusion:(If players get good feedback in dungeon playing, they would be more likely to be back in the next day. This feedback would be better happened in the first 30mins of first engagement.)
-
-
-#### The key metrics
-
-
-## What is the key user behavior
+- This project analyze the user behavior pattern in the first engagment day to find out the possible driver that can improve the retention.
 
 
 
 
-### What is the pattern of those players at their 1st day
+# Analysis procedures
 
-- data visualization
+1. identify key metrics for defining user performance
 
-### Which behavior highly correlated with this pattern
+2. identify out behavior patterns that related with good performance
 
+4. develop insight from the behaivor patterns
 
-### Why is that behavior
-- it's the major contribution of character ability
-- players who invest more behave better than those who don't(they also know that system)
-
-
-## A/B test
-
-- show how many steps to get into 
+5. propose A/B test
 
 
+
+
+
+# Identify key metrics
+
+- First the users is segamented into two groups:
+    - churned: users leaved in their first engaged day
+    - retained: users back in the second engaged day
+
+
+- For games, following metrics can represent the user performance
+    - character level
+    - time spent
+    - dungeon times 
+    - money spent
+
+(data1 : most of the retained user reach (27,7) in first day)
+(data2 : the users who reach retained status have very high retention rate)
+
+
+- In here, the better metric would be character level and dungeon times
+- More precisely, the performance of retained user in those metrics are:
+    - character level >= 27
+    - dungeon times >= 7
+    
+    this criterion is named as "retained status"
+
+
+
+# Identify behavior patterns that related with good performance
+
+- In this project, the good performance is defined with level >=27 and dungeon times >= 7
+
+- The behavior that related with the performance is found by implementing correlation analysis
+
+
+
+- The highest behavior is the 'strengthen times in system A'
+
+
+# Hypothesis 1: 
+- Players who invent more in system A would be more likely to reach the retained status
+
+(validate the hypothesis)
+
+
+- Does the invention in system A result in difference performance in dungeon experience?
+    - the metric for dungeion experience: death times, dungeion time spent
+
+
+
+- As we can see: users who invent more in system A have better experience than users who do not.
+
+
+- Moreover, the difference dungeon experience happends in the first 30mins after first engagement.
+
+(show data that the most of entry time of those dugeon is lower than 30mins)
+
+(show the ability contribution in terms of system A, B, C, where A is the major)
+
+### Insights:
+- The invention on system A will give good feedback in game experience
+- Since the system A is the major contribution on character ability in early stage.
+
+
+# Hypothesis 2:
+- Players who have good experience in dungeon playing during the first 30mins would be more likely to reach retained status
+
+- validate hypothesis 2:
+    - segament the users who played over 30mins into groups: 
+        - good experience in 30 mins
+        - no good experience in 30 mins
+            - good experience in 30+ mins
+            - no good experience in 30+ mins
+    - compare the ratio that reach retained status and retained in the next day
+
+    - it turns out that:
+        - good exp in 30 is the major user part
+        - the ratio of reach retained status is the highest, then no good exp. in 30 but have good exp in 30+
+
+
+### Insight: 
+- If players got good experience in the frist 30mins would be more likey to keep playing.
+- For now, the good experience relies on dungeion playing.
+        
+
+
+
+
+
+# A/B test
+
+## System A invention test
+- For testing the influence of invention on system A:
+    - Control group: keep the original setting
+    - Treatment group: reduce the resource for system A by half
+
+- If the retention
+    - decrease: system A is important
+    - same: system A is nothing to do with retention
+    - increase: system A affects the retention negatively
+
+
+## Good experience in specific system test
+- For understanding whether the system A is the key point result in good retention:
+    - Control group: keep the original setting
+    - Treatment grouop: 
+        - replace the introduction of system A by system B
+        - reduce the resource of system A, increase the resource of system B
+
+- If the retention
+    - decrease: good retetion relies on specific system
+    - same: good retention doesn't relies on specific system
+    - increase: good retetion relies on specific system
+
+
+
+- However, the property of system A and system B are different, if most of the players like fighting related system they will prefer system A. This may affect the result.
+
+
+## Good experience in first 30mins after engagement test
+
+- For understanding if good experience should be set in the first 30mins:
+    - Control group: keep the original setting
+    - Treatment group:
+        - postpone the introduction of system A after 30mins of first engagment
+
+- If the retention
+    - decrease: good experience in first 30mins is important for user to keep playing
+    - same: 30mins is not crucial for users, good experience is
+    - increase: good experience in first 30mins is negative influence to retention
+
+
+# Conclusion
