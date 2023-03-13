@@ -4,7 +4,7 @@
 
 ## What is the problem?
 
-- The revenue of our product after launching is lower than the A-class products
+- The revenue of our product after launching is lower than the A-class products.
 
 <img src="https://user-images.githubusercontent.com/113814545/224621196-236ca839-4ed1-45d3-acb1-3a2488170f14.png" width="550">
 
@@ -12,36 +12,30 @@
 $$Revenue = AU \times ARPU$$
 - $AU$ is the number of active user. For the $n$ th day after launching: 
 
-$$AU_n = \Sigma_{i,j}^{n}DAU_i\times R_j $$ 
+$$AU_n = \Sigma_{i,j}^{n}DAU_i\times R_{ij} $$ 
 
-$$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
+$$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$ 
+- $R_{ij}$ is the retention rate in $j$ th day where the users frist engage in $i$ th day.
+- Increasing $DAU$ is important but it will not be covered in this project.
+
+### Problem identification on retention rate or ARPU
+
+- Following picture is the comparsion of retention rate and ARPU between our product and A-class products.
+
+<img src="https://user-images.githubusercontent.com/113814545/224629594-2db7c745-de3d-458c-a9a9-598dffccb1e3.png" width="1000">
 
 
-- The retention rate of our product is **lower** than the average retention rate of A-class products in the market.
-- The ARPU of our proudct is slightly lower than other A-class products.
 
-<img src="https://user-images.githubusercontent.com/113814545/224620775-22a7dee3-973b-4314-abb5-168a031c15d7.png" width="1000">
+- The retention rate of our product is way **lower** than competitors.
+- However, the difference of ARPU between our proudct and competitors is not that much.
 
-
-
-
-- The retention rate in Day1(called R1) decreases the most compare with other days.
+- Moreover, the retention rate in Day1(called R1) decreases the most compare with other days.
 
 
 <img src="https://user-images.githubusercontent.com/113814545/223676733-2bd96b3f-7926-4ed2-a07b-d67d7155d194.png" width="550">
 
 
-
-
-## What is retention rate?
-- the percentage of new users who remain active after a given period.
-- retention formula : 
-$$Retention \space Rate =\Sigma_{i,j}^n \frac{AU_j}{DAU_i} \times 100\\% $$
-- $DAU_i$ : daily new user numbers in ith day after product launching.
-- $AU_j$ : active user numbers in jth day relative the each $DAU_i.
-
-
-
+- So the problem that result in lower revenue would be the low retention rate in first day.
 
 
 ## What is the project goal?
