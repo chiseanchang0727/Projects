@@ -3,6 +3,20 @@
 ## Outlines
 
 ## What is the problem?
+
+- The revenue of our product after launching is lower than the A-class products
+
+<img src="https://user-images.githubusercontent.com/113814545/224621196-236ca839-4ed1-45d3-acb1-3a2488170f14.png" width="550">
+
+- According to the formula, revenue can be decomposed to: 
+$$Revenue = AU \times ARPU$$
+- $AU$ is the number of active user. For the $n$ th day after launching: 
+
+$$AU_n = \Sigma_{i,j}^{n}DAU_i\times R_j $$ 
+
+$$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
+
+
 - The retention rate of our product is **lower** than the average retention rate of A-class products in the market.
 - The ARPU of our proudct is slightly lower than other A-class products.
 
