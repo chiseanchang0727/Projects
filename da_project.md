@@ -1,4 +1,24 @@
 # Increasing the retention rate by analyzing user behavior
+
+## Outlines
+
+## What is the problem?
+- The retention rate of our product is **lower** than the average retention rate of A-class products in the market.
+- The ARPU of our proudct is slightly lower than other A-class products.
+
+<img src="https://user-images.githubusercontent.com/113814545/224620775-22a7dee3-973b-4314-abb5-168a031c15d7.png" width="1000">
+
+
+
+
+- The retention rate in Day1(called R1) decreases the most compare with other days.
+
+
+<img src="https://user-images.githubusercontent.com/113814545/223676733-2bd96b3f-7926-4ed2-a07b-d67d7155d194.png" width="550">
+
+
+
+
 ## What is retention rate?
 - the percentage of new users who remain active after a given period.
 - retention formula : 
@@ -7,22 +27,6 @@ $$Retention \space Rate =\Sigma_{i,j}^n \frac{AU_j}{DAU_i} \times 100\\% $$
 - $AU_j$ : active user numbers in jth day relative the each $DAU_i.
 
 
-## Why retention rate is important?
-- Because it affects the revenue according to formula: $Revenue = AU \times ARPU$.
-- Users will pay only if they want to play, which means they must be active at first.
-- Higher retention rate means more active users, then developers have the chance to increase $ARPU$ later on.
-
-## What is the problem?
-- The retention rate of our product is **lower** than the average retention rate of A-class products in the market.
-- The ARPU of our proudct is slightly lower than other A-class products.
-
-<img src="https://user-images.githubusercontent.com/113814545/223676405-a9fb1e28-bdf0-4986-9056-355c89be2243.png" width="1000">
-
-
-- The retention rate in Day1(called R1) decreases the most compare with other days.
-
-
-<img src="https://user-images.githubusercontent.com/113814545/223676733-2bd96b3f-7926-4ed2-a07b-d67d7155d194.png" width="550">
 
 
 
