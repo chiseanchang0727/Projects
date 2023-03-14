@@ -82,25 +82,101 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
 - For games, following metrics can represent the user performance
     - character level
     - time spent
-    - dungeon times 
     - money spent
+    - dungeon times 
 
-(data1 : most of the retained user reach (27,7) in first day)
-(data2 : the users who reach retained status have very high retention rate)
 
+
+ <img src="https://user-images.githubusercontent.com/113814545/224917759-9913a0d2-c11f-4b5d-af4a-1e48454d3199.png" width="750">
+
+
+- Character level:
+    - Data processing:
+        - raw data: user leveling data
+        - processing: 
+            - select the final character level record of each user in first-engaged day
+            - tag user with 'churn' if they didn't come back in the next day
+            - tag user with 'retained' if they came back in the next day
+    - Visualize the distributioin of user number by each character level with bar chart.
+    - Insight:
+        - Most of the churn user stopped playing before level 7.
+        - The final level of most retained user is exceed level 27.
+        - This would be a suitable metric for evaluating user performance.
+ 
+
+<img src="https://user-images.githubusercontent.com/113814545/224931576-d3e46326-f99e-4554-8d86-63a28a915396.png" width="750">
+
+
+
+
+- Time spent(left panel):
+    - Data processing:
+        - raw data: user online time data
+        - processing:
+            - sum over the online time by each user in first-engaged day
+            - group the total play time by 10 mins
+            - set more than 60mins as '>60'
+            - tag user with 'churn' if they didn't come back in the next day
+            - tag user with 'retained' if they came back in the next day
+    - Visualize the user number by each time group with bar chart.
+
+    - Insights:
+        - Churn players tend to play less than 20 mins.
+        - Retained players tend to play more, most of them exceed 50 mins.
+        - It's good to be metric, but the trend is similar to final level distribution.
+
+- Money spent(right panel)
+    - Based on previous experience, churn users nearly won't pay, so check the portion of paid at first
+    - Data processing:
+        - raw data: user payment data & user login data
+        - processing: 
+            - sum over the payment by each user, named as 'paid_amount', in first-engaged day
+            - left join the login data with 'paid_amount' data
+            - fill NA with 0
+            - if paid_amount equals to 0, label the user with 'no paid'
+            - if paid_amount more than 0, label the user with 'paid'
+            - tag user with 'churn' if they didn't come back in the next day
+            - tag user with 'retained' if they came back in the next day
+    - Visualize the portion of paid and no paid with pie chart.
+    - Insights:
+        - As we expected, almost all churn users didn't pay.
+        - However, most of retained users didn't pay, too.
+        - This metric is not good to stand for the user performance.
+
+
+<img src="https://user-images.githubusercontent.com/113814545/224926798-397efb2d-b453-4141-83e1-d66abce3b2f5.png" width="500">
+
+
+- Dungeon times:
+    - Since dungeon is the main content in early stage, it has potential to be metric.
+    - Data processing:
+        - raw data: user dungeon-play data
+        - preprocessing:
+            - calculate the dungeon times by each user in first-engaged day
+            - tag user with 'churn' if they didn't come back in the next day
+            - tag user with 'retained' if they came back in the next day
+    - Visualize the user number in each dugeon times group with bar chart.
+    - Insights:
+        - Most churn player didn't play dungeon before leaving.
+        - Retained player reach a high dungeon times(upper limit in first day).
+        - This makes sense because the dungeons are unavoidable during leveling.
+        - This would be a suitable metric.
+
+
+## Metric selection
 
 - In here, the better metric would be character level and dungeon times
-- More precisely, the performance of retained user in those metrics are:
-    - character level >= 27
+- The performance of retained user in those metrics are:
+    - character level >= 26
     - dungeon times >= 7
     
-    this criterion is named as "retained status"
+- This criterion is named as <span style='color:red'> "retained status" </span>
 
 
 
 # Identify behavior patterns that related with good performance
 
-- In this project, the good performance is defined with level >=27 and dungeon times >= 7
+- In this project, the good performance is defined with level >=26 and dungeon times >= 7
 
 - The behavior that related with the performance is found by implementing correlation analysis
 
