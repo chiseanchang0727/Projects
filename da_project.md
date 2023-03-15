@@ -188,22 +188,62 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
 - This criterion is named as <span style='color:red'> "retained status" </span>
 
 
+### Check whether the metric match our target(higher retention rate)
+
+(data)
+
 
 # Identify behavior patterns that related with good performance
 
 - In this project, the good performance is defined with level >=26 and dungeon times >= 7
-
+ 
 - The behavior that related with the performance is found by implementing correlation analysis
 
+- Data processing:
+    - raw data: 
+        - user leveling data and user dungeon data in first-engaged day
+        - other user behaivor data in first-engaged day
+    - extract the max level and sum over the dungeon times by each charater, then merge together
+    - create a column called 'retained_status': if the max level equals to 26 and dugeon times equals to 7, then assigned 'True'. Else assigned 'False'
+
+- Correlation anaalysis:
+        - Point-biserial correlation: since one variable is binary
+
+- Result is following:
+
+![image](https://user-images.githubusercontent.com/113814545/225241599-2b514953-0c81-4ace-952d-9489048c6903.png)
 
 
-- The highest behavior is the 'strengthen times in system A'
+
+- The behavior highly correlated with retained status is 'system_A_invetion_1
 
 
 # Hypothesis 1: 
 - Players who invent more in system A would be more likely to reach the retained status
 
-(validate the hypothesis)
+
+
+- The contingency table of reaching retained status and system A invetion is following:
+    - recalled reatined status is: (max_level = 26) and (dungeon_times = 7) in first-engaged day
+    - be caution the data only reflects the trend since confidential rule
+
+|             | Reach retained status  | No reach retained status |
+|-------------|:-----------:|:--------------:|
+| Low invent. in system A |    67     |     439      |
+| High invent. in system A|   158     |     252      |
+
+
+
+- the p-value is 1.867e-18 < 0.05, so null hypothesis is rejected
+=> system_A_invention is significant association with reaching retained status
+
+
+
+## Insights:
+
+- 
+
+
 
 
 - Does the invention in system A result in difference performance in dungeon experience?
