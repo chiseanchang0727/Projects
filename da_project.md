@@ -211,7 +211,7 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
 
 - Result is following:
 
-![image](https://user-images.githubusercontent.com/113814545/225241599-2b514953-0c81-4ace-952d-9489048c6903.png)
+![image](https://user-images.githubusercontent.com/113814545/225265107-049e0db4-0bd9-4fbe-9f1a-a3c0e4d32079.png)
 
 
 
@@ -234,31 +234,38 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
 
 
 
-- the p-value is 1.867e-18 < 0.05, so null hypothesis is rejected
-=> system_A_invention is significant association with reaching retained status
+- where p-value = 1.867e-18 < 0.05, the null hypothesis is rejected
+=> system_A_invention is significant associated with reaching retained status
 
 
 
 ## Insights:
 
-- 
+- We can not conclude that the invention on system A is the reason for playing.
+- An explanation is that system A contributes to character ability the most, users may got better experience when playing dungeons.
+
+
+## Investigate the dugeon performance 
+
+- Whether the invention in system A result in difference performance in dungeon experience?
+    - the metric for dungeion experience: dungeon death times
 
 
 
 
-- Does the invention in system A result in difference performance in dungeon experience?
-    - the metric for dungeion experience: death times, dungeion time spent
+![image](https://user-images.githubusercontent.com/113814545/225272261-b2039db1-acf1-433c-93b2-f9bc106e955c.png)
 
 
 
-- As we can see: users who invent more in system A have better experience than users who do not.
+
+
+- Users who invent more in system A has less dungeon death times.
 
 
 - Moreover, the difference dungeon experience happends in the first 30mins after first engagement.
 
 (show data that the most of entry time of those dugeon is lower than 30mins)
 
-(show the ability contribution in terms of system A, B, C, where A is the major)
 
 ### Insights:
 - The invention on system A will give good feedback in game experience
