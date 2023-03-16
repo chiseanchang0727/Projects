@@ -137,7 +137,7 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
 <img src="https://user-images.githubusercontent.com/113814545/224939019-3e6a9c75-445d-4cd9-a253-5f5cf292122e.png" width="450">
 
 
-- Based on previous experience, churn users nearly won't pay, so check the portion of paid at first
+- Based on previous feedback, churn users nearly won't pay, so check the portion of paid at first
 - Data processing:
     - raw data: user payment data & user login data
     - processing: 
@@ -206,92 +206,99 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
     - extract the max level and sum over the dungeon times by each charater, then merge together
     - create a column called 'retained_status': if the max level equals to 26 and dugeon times equals to 7, then assigned 'True'. Else assigned 'False'
 
-- Correlation anaalysis:
-        - Point-biserial correlation: since one variable is binary
+- Correlation anaalysis: Point-biserial correlation(since one variable is binary)
 
 - Result is following:
 
-![image](https://user-images.githubusercontent.com/113814545/225265107-049e0db4-0bd9-4fbe-9f1a-a3c0e4d32079.png)
+![image](https://user-images.githubusercontent.com/113814545/225570453-298b95cc-b922-41fa-8cde-d2f4ecc14ed9.png)
 
 
 
-- The behavior highly correlated with retained status is 'system_A_invetion_1
+- The behavior highly correlated with retained status is 'system_A_strengthen_1
 
 
-# Hypothesis 1: 
-- Players who invent more in system A would be more likely to reach the retained status
+# Hypothesis、Validation
 
+## Hypothesis
+- Players who strength more in system A would be more likely to reach the retained status
 
+## Validation
 
-- The contingency table of reaching retained status and system A invetion is following:
+- The contingency table of reaching retained status and system A strengthen is following:
     - recalled reatined status is: (max_level = 26) and (dungeon_times = 7) in first-engaged day
     - be caution the data only reflects the trend since confidential rule
 
 |             | Reach retained status  | No reach retained status |
 |-------------|:-----------:|:--------------:|
-| Low invent. in system A |    67     |     439      |
-| High invent. in system A|   158     |     252      |
+| Low strength. in system A |    67     |     2529      |
+| High strength. in system A|   158     |     166      |
 
 
 
-- where p-value = 1.867e-18 < 0.05, the null hypothesis is rejected
-=> system_A_invention is significant associated with reaching retained status
+- where p-value = 1.867e-188 < 0.05, the null hypothesis is rejected
+=> system_A_strengthen is significant associated with reaching retained status
 
 
 
-## Insights:
+## Summaries
 
-- We can not conclude that the invention on system A is the reason for playing.
-- An explanation is that system A contributes to character ability the most, users may got better experience when playing dungeons.
-
-
-## Investigate the dugeon performance 
-
-- Whether the invention in system A result in difference performance in dungeon experience?
-    - the metric for dungeion experience: dungeon death times
+- strengthen in system A is highly related with reaching the retained status.
+- Hoever, we can not conclude that the strengthen on system A is the reason for coming back in next day.
 
 
+# Investigate the reason
+
+- Since the metric ,dungeon play times, reflects how strong a chararcter is, it is a good guessing that the system A may contribute to character's ability.
+
+- Following pie chart shows that system A is the major contribution before level 28.
 
 
-![image](https://user-images.githubusercontent.com/113814545/225272261-b2039db1-acf1-433c-93b2-f9bc106e955c.png)
+<img src="https://user-images.githubusercontent.com/113814545/225538450-ad1b69cb-4a6f-440c-aae5-6a947bcafb92.png" width="300">
+
+
+- An explanation is that system A contributes to character ability the most, users may got better feedback when playing dungeons.
+
+
+## Check the dugeon performance with system A strengthen
+
+- Whether the strengthen in system A result in difference performance in dungeon feedback?
+    - the metric for dungeion feedback: average dungeon time spent
+
+
+- Following scatter plot shows the relationship between average dungeon time spent and the amount of strengthen in system A:
+    - Users who strengthen more in system A has less dungeon time spent, which means they have better feedback when playing.
+
+![image](https://user-images.githubusercontent.com/113814545/225576933-ddc1d7a2-f23d-4a1f-b939-0280e1193ea3.png)
 
 
 
 
 
-- Users who invent more in system A has less dungeon death times.
 
 
-- Moreover, the difference dungeon experience happends in the first 30mins after first engagement.
 
-(show data that the most of entry time of those dugeon is lower than 30mins)
+## What's the probelm in strengthing in system A?
 
-
-### Insights:
-- The invention on system A will give good feedback in game experience
-- Since the system A is the major contribution on character ability in early stage.
+- I want to know:
+    1. how many users who can access to system A knows the system
+    2. how many users reach the strengthen part of system A
 
 
-# Hypothesis 2:
-- Players who have good experience in dungeon playing during the first 30mins would be more likely to reach retained status
-
-- validate hypothesis 2:
-    - segament the users who played over 30mins into groups: 
-        - good experience in 30 mins
-        - no good experience in 30 mins
-            - good experience in 30+ mins
-            - no good experience in 30+ mins
-    - compare the ratio that reach retained status and retained in the next day
-
-    - it turns out that:
-        - good exp in 30 is the major user part
-        - the ratio of reach retained status is the highest, then no good exp. in 30 but have good exp in 30+
+- Following is the result:
+    1. 69% of all users know the system A
+    2. 14% of them reach the strengthen part.
+        - there are several funnels, here I only list the major one
+    
+<img src="https://user-images.githubusercontent.com/113814545/225564161-7783a7dd-4531-4a63-aa72-7c54ba27c396.png" width="750">
 
 
-### Insight: 
-- If players got good experience in the frist 30mins would be more likey to keep playing.
-- For now, the good experience relies on dungeion playing.
-        
+
+# Insights:
+- The strengthen in system A give good feedback in game feedback
+- Layout design result in only fewer users strengthing in system A.
+
+
+
 
 
 
@@ -299,8 +306,8 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
 
 # A/B test
 
-## System A invention test
-- For testing the influence of invention on system A:
+## System A strengthen test
+- For testing the influence of strengthen on system A:
     - Control group: keep the original setting
     - Treatment group: reduce the resource for system A by half
 
@@ -310,34 +317,9 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
     - increase: system A affects the retention negatively
 
 
-## Good experience in specific system test
-- For understanding whether the system A is the key point result in good retention:
-    - Control group: keep the original setting
-    - Treatment grouop: 
-        - replace the introduction of system A by system B
-        - reduce the resource of system A, increase the resource of system B
-
-- If the retention
-    - decrease: good retetion relies on specific system
-    - same: good retention doesn't relies on specific system
-    - increase: good retetion relies on specific system
-
-
-
-- However, the property of system A and system B are different, if most of the players like fighting related system they will prefer system A. This may affect the result.
-
-
-## Good experience in first 30mins after engagement test
-
-- For understanding if good experience should be set in the first 30mins:
-    - Control group: keep the original setting
-    - Treatment group:
-        - postpone the introduction of system A after 30mins of first engagment
-
-- If the retention
-    - decrease: good experience in first 30mins is important for user to keep playing
-    - same: 30mins is not crucial for users, good experience is
-    - increase: good experience in first 30mins is negative influence to retention
-
 
 # Conclusion
+
+1. The strengthen in system A is important for users to keep playing.
+2. The strengthen will give good feedback on dungeon playing in return.
+3. The layout design would be the major problem for users to find out the strengthen part of system A.
