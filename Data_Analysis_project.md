@@ -1,4 +1,7 @@
 
+# Project: Improving User Retention Rates through Deep Insights into User Behavior
+
+
 
 # Outlines
 
@@ -15,45 +18,83 @@
 6. Conclusion
 
 
-# What is the problem?
+# What is the problem? Low Revenue
 
-- The revenue of our product after launching is lower than the A-class products.
+- The revenue of our product after launching is lower than the average revenue of A-class products.
 
-<img src="https://user-images.githubusercontent.com/113814545/224621196-236ca839-4ed1-45d3-acb1-3a2488170f14.png" width="550">
+    <img src="https://user-images.githubusercontent.com/113814545/225862496-4b10ef98-f19a-467b-8388-0e4676639fd9.png" width="550">
+    
+    
 
 - According to the formula, revenue can be decomposed to: 
 $$Revenue = AU \times ARPU$$
-- $AU$ is the number of active user. For the $n$ th day after launching: 
+- $AU$ is the number of active user, the formula is: 
 
-$$AU_n = \Sigma_{i,j}^{n}DAU_i\times R_{ij} $$ 
-
-$$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$ 
-- $R_{ij}$ is the retention rate in $j$ th day where the users frist engage in $i$ th day.
-- $DAU$ is related with onboarding processand advertisment strategies, which will not be covered in this project.
-
-## Problem identification on retention rate or ARPU
-
-- Following picture is the comparsion of retention rate and ARPU between our product and A-class products.
-
-<img src="https://user-images.githubusercontent.com/113814545/224629594-2db7c745-de3d-458c-a9a9-598dffccb1e3.png" width="1000">
+$$AU = DNU\times R $$ 
 
 
-
-- The retention rate of our product is way **lower** than competitors.
-- However, the difference of ARPU between our proudct and competitors is not that much.
-
-- Moreover, the retention rate in Day1(called R1) decreases the most compare with other days.
+- $R$ is called retention rate, which is the percentage of user who returns after their initial login.
 
 
-<img src="https://user-images.githubusercontent.com/113814545/223676733-2bd96b3f-7926-4ed2-a07b-d67d7155d194.png" width="550">
+- $DNU$ is daily new user, which is related with onboarding process and advertisment strategies.
+
+# Wher is the problem? Retention rate of R1
+
+The problem is identified by comparing our product with A-class producs.
+
+## ARPU v.s. AU
+From the following picture we can see:
+   - ARPU nearly equls to the average ARPU of A-class products.
+   - AU is way lower than the average AU of A-class products.
+   - So AU would be the major problem of result in low revenue.
+  
+
+   <img src="https://user-images.githubusercontent.com/113814545/225863347-ae35d06b-7f81-4d86-8829-6acea07506ee.png" width="800">
 
 
-- So the problem that result in lower revenue would be the low R1.
+
+## DNU v.s. R
+
+- $AU$ is the number of active user, the formula is: 
+
+$$AU = DNU\times Retention \space Rate $$ 
+
+
+- Retention rate, $R$ , is the percentage of user who returns after their initial login.
+
+
+- $DNU$ is daily new user, which is related with onboarding process and advertisment strategies.
+
+As we can see from following picture:
+
+- The retention rate of our product is **lower** than competitors, especially in $R1$ (35%).
+- However, there is no big difference between our proudct and competitors in DNU.
+- So the problem is that 
+
+
+
+
+
+<img src="https://user-images.githubusercontent.com/113814545/225872099-bd0b42a3-2122-47e8-9890-9ca913b1203f.png" width="800">
+
+
+
+'0' in left panel means the launch date.
+
+'1' in left panel means 1 days after launching.
+
+R1 = 35% means there is 35% of user returns in the second day.
+
+R2 = 25% means there is 25% of user returns in the third day relative to the launch date.
+    
+
+
+
 
 
 # What is the project goal?
 
-- This project analyze the user behavior pattern in the first engagment day to find out the possible driver that can improve the retention.
+- This project is aiming on improving the retention rate of launching day, $R1$, by analyzing the user behavior pattern in the lauching day to find out the possible driver that can improve the retention.
 
 
 
@@ -62,7 +103,7 @@ $$ i,j ∈ \lbrace 0, 1, 2, ..., n\rbrace $$
 
 1. identify key metrics for defining user performance
 
-2. identify out behavior patterns that related with good performance
+2. identify the behavior patterns that related with good performance
 
 4. develop insight from the behaivor patterns
 
