@@ -1,33 +1,47 @@
 
-# Project: Improving User Retention Rates through Deep Insights into User Behavior
-
+# Improve Business Performance by Analyzing User Behavior
 
 
 # Outlines
 
-1. What is the problem?
+1. Assess Product Performance
+    - Compare revenue performance to industry benchmarks
 
-2. What is the project goal?
+2. Identify Key Metrics
+    - Determine which metric(s) are impacting low revenue
+3. Analyze In-Game Metrics
+    - Identify relevant in-game metrics that contribute to retention performance
 
-3. Analysis procedures
-
-4. Identify key metrics
-
-5. Insights from hypotheses and validation
-
-6. Conclusion
-
-
-# What is the problem? Low Revenue
-
-- The revenue of our product after launching is lower than the average revenue of A-class products.
-
-    <img src="https://user-images.githubusercontent.com/113814545/225862496-4b10ef98-f19a-467b-8388-0e4676639fd9.png" width="550">
+4. Identify Behavioral Patterns
+    - Analyze user behavior data to identify patterns associated with good performance
     
-    
+5. Generate Insights from Hypotheses and Validation
+    - Develop actionable strategies to improve revenue performance based on insights gained from analysis and testing
 
+6. A/B Tests Proposal
+
+    - Propose A/B tests to validate hypotheses and measure impact on retention performance
+Analyze Results
+
+6. Conclusions 
+    - Summarize key findings and recommendations for future analysis and experimentation to continue improving revenue performance.
+
+
+# Assess Product Performance
+
+
+
+- **The revenue of our product after launching is lower than the average revenue of A-class products.**
+
+    <img src="https://user-images.githubusercontent.com/113814545/226541296-5bd1df40-9ab6-4e01-88ee-0e845710fd03.png" width="550">
+
+
+    
 - According to the formula, revenue can be decomposed to: 
 $$Revenue = AU \times ARPU$$
+
+
+
 - $AU$ is the number of active user, the formula is: 
 
 $$AU = DNU\times R $$ 
@@ -38,9 +52,9 @@ $$AU = DNU\times R $$
 
 - $DNU$ is daily new user, which is related with onboarding process and advertisment strategies.
 
-# Wher is the problem? Retention rate of R1
+# Identify Key Metrics
 
-The problem is identified by comparing our product with A-class producs.
+The reason of relative bad performance is identified by comparing our product with A-class producs.
 
 ## ARPU v.s. AU
 From the following picture we can see:
@@ -49,18 +63,19 @@ From the following picture we can see:
    - So AU would be the major problem of result in low revenue.
   
 
-   <img src="https://user-images.githubusercontent.com/113814545/225863347-ae35d06b-7f81-4d86-8829-6acea07506ee.png" width="800">
+
+<img src="https://user-images.githubusercontent.com/113814545/226541661-a428cab7-3061-4f69-a647-11a17eb2f4c4.png" width="800">
 
 
 
-## DNU v.s. R
+## DNU v.s. Rentention
 
 - $AU$ is the number of active user, the formula is: 
 
-$$AU = DNU\times Retention \space Rate $$ 
+$$AU = DNU\times Retention $$ 
 
 
-- Retention rate, $R$ , is the percentage of user who returns after their initial login.
+- Retention, $R$ , is the percentage of user who returns after their initial login.
 
 
 - $DNU$ is daily new user, which is related with onboarding process and advertisment strategies.
@@ -69,13 +84,13 @@ As we can see from following picture:
 
 - The retention rate of our product is **lower** than competitors, especially in $R1$ (35%).
 - However, there is no big difference between our proudct and competitors in DNU.
-- So the problem is that 
+- So the problem of low AU comes from low Retention, especially in the first day, $R1$.
 
 
 
 
 
-<img src="https://user-images.githubusercontent.com/113814545/225872099-bd0b42a3-2122-47e8-9890-9ca913b1203f.png" width="800">
+<img src="https://user-images.githubusercontent.com/113814545/226542444-2d388b50-9a43-471b-a2ba-dc27c116c8aa.png" width="900">
 
 
 
@@ -92,28 +107,8 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 
 
-# What is the project goal?
 
-- This project is aiming on improving the retention rate of launching day, $R1$, by analyzing the user behavior pattern in the lauching day to find out the possible driver that can improve the retention.
-
-
-
-
-# Analysis procedures
-
-1. identify key metrics for defining user performance
-
-2. identify the behavior patterns that related with good performance
-
-4. develop insight from the behaivor patterns
-
-5. propose A/B test
-
-
-
-
-
-# Identify key metrics
+# Analyze In-Game Metrics
 
 - First the users is segamented into two groups:
     - churned: users leaved in their first engaged day
@@ -175,7 +170,8 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 ## Money spent
 
-<img src="https://user-images.githubusercontent.com/113814545/224939019-3e6a9c75-445d-4cd9-a253-5f5cf292122e.png" width="450">
+<img src="https://user-images.githubusercontent.com/113814545/226516805-b1ee51a7-f1fe-4de9-9ffa-9bc048b796b6.png    " width="450">
+
 
 
 - Based on previous feedback, churn users nearly won't pay, so check the portion of paid at first
@@ -201,7 +197,7 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 ## Dungeon times
 
-<img src="https://user-images.githubusercontent.com/113814545/224926798-397efb2d-b453-4141-83e1-d66abce3b2f5.png" width="500">
+<img src="https://user-images.githubusercontent.com/113814545/226525540-6de5353a-e44d-47b0-9064-a9cfe31955cb.png" width="500">
 
 
 - Since dungeon is the main content in early stage, it has potential to be metric.
@@ -226,19 +222,23 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
     - character level >= 26
     - dungeon times >= 7
     
-- This criterion is named as <span style='color:red'> "retained status" </span>
+- This criterion is named as <span style='color:red'> "**retained status**" </span>
+- The users reached this status in the first day called "retained-status users"
 
 
-### Check whether the metric match our target(higher retention rate)
+## Check whether the metric match our target(higher retention rate)
 
-(data)
+Following picture shows that the users filtered out by the metirc perform better than the benchmark.
+
+<img src="https://user-images.githubusercontent.com/113814545/226520687-e920cef1-b672-4d9d-89be-d9b645973bf2.png" width="500">
 
 
-# Identify behavior patterns that related with good performance
+
+# Identify Behavioral Patterns
 
 - In this project, the good performance is defined with level >=26 and dungeon times >= 7
  
-- The behavior that related with the performance is found by implementing correlation analysis
+- The behavior that related with the performance is found by implementing correlation analysis.
 
 - Data processing:
     - raw data: 
@@ -255,10 +255,10 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 
 
-- The behavior highly correlated with retained status is 'system_A_strengthen_1
+- The behavior highly correlated with retained status is 'system_A_strengthen'
 
 
-# Hypothesis、Validation
+# Generate Insights from Hypotheses and Validation
 
 ## Hypothesis
 - Players who strength more in system A would be more likely to reach the retained status
@@ -276,8 +276,8 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 
 
-- where p-value = 1.867e-188 < 0.05, the null hypothesis is rejected
-=> system_A_strengthen is significant associated with reaching retained status
+- p-value = 1.867e-188 < 0.05, the null hypothesis is rejected
+    - system_A_strengthen is significant associated with reaching retained status
 
 
 
@@ -287,11 +287,11 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 - Hoever, we can not conclude that the strengthen on system A is the reason for coming back in next day.
 
 
-# Investigate the reason
+## Investigate the reasons
 
 - Since the metric ,dungeon play times, reflects how strong a chararcter is, it is a good guessing that the system A may contribute to character's ability.
 
-- Following pie chart shows that system A is the major contribution before level 28.
+- Following pie chart shows that system A is the major contribution before level 28 of the retained-status users.
 
 
 <img src="https://user-images.githubusercontent.com/113814545/225538450-ad1b69cb-4a6f-440c-aae5-6a947bcafb92.png" width="300">
@@ -318,7 +318,7 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 
 
-## What's the probelm in strengthing in system A?
+## What's the probelm in strengthening the system A?
 
 - I want to know:
     1. how many users who can access to system A knows the system
@@ -330,22 +330,24 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
     2. 14% of them reach the strengthen part.
         - there are several funnels, here I only list the major one
     
-<img src="https://user-images.githubusercontent.com/113814545/225564161-7783a7dd-4531-4a63-aa72-7c54ba27c396.png" width="750">
+<img src="https://user-images.githubusercontent.com/113814545/226556872-43956160-5803-46b9-ab0a-cf9574a9ea26.png" width="750">
+
 
 
 
 # Insights:
-- The strengthen in system A give good feedback in game feedback
-- Layout design result in only fewer users strengthing in system A.
+
+
+- Users who churned had negative feedback about playing dungeons compared to retained users.
+- Positive feedback about playing dungeons is closely tied to the strength of System A.
+- The layout design is hindering some users from discovering the strengthen aspect of System A.
 
 
 
 
 
 
-
-
-# A/B test
+# A/B Tests Proposal
 
 ## System A strengthen test
 - For testing the influence of strengthen on system A:
@@ -358,8 +360,18 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
     - increase: system A affects the retention negatively
 
 
+## System A replacement test
+- For testing whether other system can replace system A if it can bring good feedback:
+    - Control group: keep the original setting
+    - Treatment group: replace the ability contribution of system A by system B
 
-# Conclusion
+- If the retention
+    - decrease: system A is special
+    - same: users chasing good feedback no matter which system is
+    - increase: system B may provide better feedback then system A
+
+
+# Conclusions and Recommendations
 
 1. The strengthen in system A is important for users to keep playing.
 2. The strengthen will give good feedback on dungeon playing in return.
