@@ -1,5 +1,5 @@
 
-# Improve Business Performance by Analyzing User Behavior
+# Improve Business Performance by Analyzing In-game User Behavior
 
 
 # Outlines
@@ -31,13 +31,18 @@ Analyze Results
 
 
 
-- **The revenue of our product after launching is lower than the average revenue of A-class products.**
+- **The revenue of our product after launching is lower than the average revenue of industry benchmarks.**
 
     <img src="https://user-images.githubusercontent.com/113814545/226541296-5bd1df40-9ab6-4e01-88ee-0e845710fd03.png" width="550">
 
 
-    
-- According to the formula, revenue can be decomposed to: 
+# Identify Key Metrics
+
+
+To investigate the reason for low revenue, I will analyze the metrics to determine which one may be contributing to the low revenue.
+
+   
+- Revenue can be decomposed to: 
 $$Revenue = AU \times ARPU$$
 
 
@@ -52,14 +57,12 @@ $$AU = DNU\times R $$
 
 - $DNU$ is daily new user, which is related with onboarding process and advertisment strategies.
 
-# Identify Key Metrics
 
-The reason of relative bad performance is identified by comparing our product with A-class producs.
 
 ## ARPU v.s. AU
 From the following picture we can see:
-   - ARPU nearly equls to the average ARPU of A-class products.
-   - AU is way lower than the average AU of A-class products.
+   - ARPU nearly equls to the average ARPU of industry benchmarks.
+   - AU is way lower than the average AU of industry benchmarks.
    - So AU would be the major problem of result in low revenue.
   
 
@@ -70,15 +73,6 @@ From the following picture we can see:
 
 ## DNU v.s. Rentention
 
-- $AU$ is the number of active user, the formula is: 
-
-$$AU = DNU\times Retention $$ 
-
-
-- Retention, $R$ , is the percentage of user who returns after their initial login.
-
-
-- $DNU$ is daily new user, which is related with onboarding process and advertisment strategies.
 
 As we can see from following picture:
 
@@ -101,21 +95,23 @@ As we can see from following picture:
 R1 = 35% means there is 35% of user returns in the second day.
 
 R2 = 25% means there is 25% of user returns in the third day relative to the launch date.
+
+
+## Summary:
+
+Retention contributes to low revenue.
     
 
+# Analyze In-Game Metrics Related to Retention
+
+To identify which user behavior metrics are related to retention, I will analyze several metrics and determine which of them have a correlation with retention
+
+- The users is segamented into two groups:
+    - churn: users leave in their first-engaged day
+    - retained: users back in the second-engaged day
 
 
-
-
-
-# Analyze In-Game Metrics
-
-- First the users is segamented into two groups:
-    - churned: users leaved in their first engaged day
-    - retained: users back in the second engaged day
-
-
-- For games, following metrics can represent the user performance
+- For games, following metrics represent the user performance 
     - character level
     - time spent
     - money spent
@@ -126,16 +122,18 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 ## Character level
 
 
- <img src="https://user-images.githubusercontent.com/113814545/224939335-0e5773a9-f771-4cd6-9e73-6d9f4ce7c4e8.png" width="750">
-
-
 - Data processing:
     - raw data: user leveling data
     - processing: 
-        - select the final character level record of each user in first-engaged day
-        - tag user with 'churn' if they didn't come back in the next day
-        - tag user with 'retained' if they came back in the next day
+        - select the max level of each user in first-engaged day
+
 - Visualize the distributioin of user number by each character level with bar chart.
+
+
+
+ <img src="https://user-images.githubusercontent.com/113814545/224939335-0e5773a9-f771-4cd6-9e73-6d9f4ce7c4e8.png" width="750">
+
+
 - Insight:
     - Most of the churn user stopped playing before level 7.
     - The final level of most retained user is exceed level 27.
@@ -146,19 +144,18 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 ## Time spent
 
-<img src="https://user-images.githubusercontent.com/113814545/224939511-ef5d89b6-8284-4879-88b3-c9954d65243e.png" width="750">
-
-
-
 - Data processing:
     - raw data: user online time data
     - processing:
         - sum over the online time by each user in first-engaged day
         - group the total play time by 10 mins
         - set more than 60mins as '>60'
-        - tag user with 'churn' if they didn't come back in the next day
-        - tag user with 'retained' if they came back in the next day
+
 - Visualize the user number by each time group with bar chart.
+
+<img src="https://user-images.githubusercontent.com/113814545/224939511-ef5d89b6-8284-4879-88b3-c9954d65243e.png" width="750">
+
+
 
 - Insights:
     - Churn players tend to play less than 20 mins.
@@ -170,11 +167,6 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 ## Money spent
 
-<img src="https://user-images.githubusercontent.com/113814545/226516805-b1ee51a7-f1fe-4de9-9ffa-9bc048b796b6.png    " width="450">
-
-
-
-- Based on previous feedback, churn users nearly won't pay, so check the portion of paid at first
 - Data processing:
     - raw data: user payment data & user login data
     - processing: 
@@ -183,9 +175,12 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
         - fill NA with 0
         - if paid_amount equals to 0, label the user with 'no paid'
         - if paid_amount more than 0, label the user with 'paid'
-        - tag user with 'churn' if they didn't come back in the next day
-        - tag user with 'retained' if they came back in the next day
+
 - Visualize the portion of paid and no paid with pie chart.
+
+<img src="https://user-images.githubusercontent.com/113814545/226516805-b1ee51a7-f1fe-4de9-9ffa-9bc048b796b6.png    " width="450">
+
+
 - Insights:
     - As we expected, almost all churn users didn't pay.
     - However, most of retained users didn't pay, too.
@@ -197,10 +192,9 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 ## Dungeon times
 
-<img src="https://user-images.githubusercontent.com/113814545/226525540-6de5353a-e44d-47b0-9064-a9cfe31955cb.png" width="500">
 
 
-- Since dungeon is the main content in early stage, it has potential to be metric.
+- Dungeon times has the potential since it is the main content in early stage.
 - Data processing:
     - raw data: user dungeon-play data
     - preprocessing:
@@ -208,6 +202,11 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
         - tag user with 'churn' if they didn't come back in the next day
         - tag user with 'retained' if they came back in the next day
 - Visualize the user number in each dugeon times group with bar chart.
+
+<img src="https://user-images.githubusercontent.com/113814545/226525540-6de5353a-e44d-47b0-9064-a9cfe31955cb.png" width="500">
+
+
+
 - Insights:
     - Most churn player didn't play dungeon before leaving.
     - Retained player reach a high dungeon times(upper limit in first day).
