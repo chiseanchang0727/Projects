@@ -111,7 +111,7 @@ To identify which user behavior metrics are related to retention, I will analyze
     - retained: users back in the second-engaged day
 
 
-- For games, following metrics represent the user performance 
+- For games, following metrics indicate the performance 
     - character level
     - time spent
     - money spent
@@ -119,21 +119,9 @@ To identify which user behavior metrics are related to retention, I will analyze
 
 
 
-## Character level
+## Character final level
 
-
-- Data processing:
-    - raw data: user leveling data
-    - processing: 
-        - select the max level of each user in first-engaged day
-
-- Visualize the distributioin of user number by each character level with bar chart.
-
-
-
- <img src="https://user-images.githubusercontent.com/113814545/224939335-0e5773a9-f771-4cd6-9e73-6d9f4ce7c4e8.png" width="750">
-
-
+- The final level shows where do users stop playing.
 - Insight:
     - Most of the churn user stopped playing before level 7.
     - The final level of most retained user is exceed level 27.
@@ -142,49 +130,40 @@ To identify which user behavior metrics are related to retention, I will analyze
 
 
 
+ <img src="https://user-images.githubusercontent.com/113814545/224939335-0e5773a9-f771-4cd6-9e73-6d9f4ce7c4e8.png" width="750">
+
+
+
+
+
 ## Time spent
 
-- Data processing:
-    - raw data: user online time data
-    - processing:
-        - sum over the online time by each user in first-engaged day
-        - group the total play time by 10 mins
-        - set more than 60mins as '>60'
-
-- Visualize the user number by each time group with bar chart.
-
-<img src="https://user-images.githubusercontent.com/113814545/224939511-ef5d89b6-8284-4879-88b3-c9954d65243e.png" width="750">
-
-
-
+- following picture is the time spent distribution of users in the first-engaged day.
 - Insights:
     - Churn players tend to play less than 20 mins.
     - Retained players tend to play more, most of them exceed 50 mins.
     - It's good to be metric, but the trend is similar to final level distribution.
 
 
+<img src="https://user-images.githubusercontent.com/113814545/224939511-ef5d89b6-8284-4879-88b3-c9954d65243e.png" width="750">
+
+
+
+
+
 
 
 ## Money spent
 
-- Data processing:
-    - raw data: user payment data & user login data
-    - processing: 
-        - sum over the payment by each user, named as 'paid_amount', in first-engaged day
-        - left join the login data with 'paid_amount' data
-        - fill NA with 0
-        - if paid_amount equals to 0, label the user with 'no paid'
-        - if paid_amount more than 0, label the user with 'paid'
-
-- Visualize the portion of paid and no paid with pie chart.
-
-<img src="https://user-images.githubusercontent.com/113814545/226516805-b1ee51a7-f1fe-4de9-9ffa-9bc048b796b6.png    " width="450">
-
-
+- Compare the percentage of paid users in each group.
 - Insights:
     - As we expected, almost all churn users didn't pay.
     - However, most of retained users didn't pay, too.
     - This metric is not good to stand for the user performance.
+
+
+<img src="https://user-images.githubusercontent.com/113814545/226516805-b1ee51a7-f1fe-4de9-9ffa-9bc048b796b6.png    " width="450">
+
 
 
 
@@ -192,31 +171,23 @@ To identify which user behavior metrics are related to retention, I will analyze
 
 ## Dungeon times
 
-
-
 - Dungeon times has the potential since it is the main content in early stage.
-- Data processing:
-    - raw data: user dungeon-play data
-    - preprocessing:
-        - calculate the dungeon times by each user in first-engaged day
-        - tag user with 'churn' if they didn't come back in the next day
-        - tag user with 'retained' if they came back in the next day
-- Visualize the user number in each dugeon times group with bar chart.
-
-<img src="https://user-images.githubusercontent.com/113814545/226525540-6de5353a-e44d-47b0-9064-a9cfe31955cb.png" width="500">
-
-
-
 - Insights:
     - Most churn player didn't play dungeon before leaving.
     - Retained player reach a high dungeon times(upper limit in first day).
     - This makes sense because the dungeons are unavoidable during leveling.
     - This would be a suitable metric.
 
+<img src="https://user-images.githubusercontent.com/113814545/226525540-6de5353a-e44d-47b0-9064-a9cfe31955cb.png" width="500">
+
+
+
+
 
 ## Metric selection
 
-- In here, the better metric would be character level and dungeon times
+- The better metric would be character final level and dungeon times.
+- Time spent and final level has similar trend, but level is highly connected with user journey.
 - The performance of retained user in those metrics are:
     - character level >= 26
     - dungeon times >= 7
@@ -235,16 +206,10 @@ Following picture shows that the users filtered out by the metirc perform better
 
 # Identify Behavioral Patterns
 
-- In this project, the good performance is defined with level >=26 and dungeon times >= 7
+- In this project, the good in-game performance is defined with level >=26 and dungeon times >= 7
  
 - The behavior that related with the performance is found by implementing correlation analysis.
 
-- Data processing:
-    - raw data: 
-        - user leveling data and user dungeon data in first-engaged day
-        - other user behaivor data in first-engaged day
-    - extract the max level and sum over the dungeon times by each charater, then merge together
-    - create a column called 'retained_status': if the max level equals to 26 and dugeon times equals to 7, then assigned 'True'. Else assigned 'False'
 
 - Correlation anaalysis: Point-biserial correlation(since one variable is binary)
 
@@ -280,13 +245,7 @@ Following picture shows that the users filtered out by the metirc perform better
 
 
 
-## Summaries
-
-- strengthen in system A is highly related with reaching the retained status.
-- Hoever, we can not conclude that the strengthen on system A is the reason for coming back in next day.
-
-
-## Investigate the reasons
+## Generate insights
 
 - Since the metric ,dungeon play times, reflects how strong a chararcter is, it is a good guessing that the system A may contribute to character's ability.
 
@@ -299,9 +258,8 @@ Following picture shows that the users filtered out by the metirc perform better
 - An explanation is that system A contributes to character ability the most, users may got better feedback when playing dungeons.
 
 
-## Check the dugeon performance with system A strengthen
 
-- Whether the strengthen in system A result in difference performance in dungeon feedback?
+- So, whether the strengthen in system A result in difference performance in dungeon feedback?
     - the metric for dungeion feedback: average dungeon time spent
 
 
@@ -317,11 +275,11 @@ Following picture shows that the users filtered out by the metirc perform better
 
 
 
-## What's the probelm in strengthening the system A?
+### What's the probelm in strengthening the system A?
 
 - I want to know:
-    1. how many users who can access to system A knows the system
-    2. how many users reach the strengthen part of system A
+    1. how many users who can access to system A knows it
+    2. how many users who know system A reach the strengthen part of system A
 
 
 - Following is the result:
@@ -329,13 +287,16 @@ Following picture shows that the users filtered out by the metirc perform better
     2. 14% of them reach the strengthen part.
         - there are several funnels, here I only list the major one
     
-<img src="https://user-images.githubusercontent.com/113814545/226556872-43956160-5803-46b9-ab0a-cf9574a9ea26.png" width="750">
+<img src="https://user-images.githubusercontent.com/113814545/226876797-9d266256-c4dc-4af7-a97f-f1baab65f445.png" width="750">
 
 
 
 
-# Insights:
+## Insights:
 
+- strengthen in system A is highly related with reaching the retained status.
+- The correlation coefficient is positve, which means strengthen more in system A will be more likely to reach retained status.
+- However, we can not conclude that the strengthen on system A is the reason for coming back in next day.
 
 - Users who churned had negative feedback about playing dungeons compared to retained users.
 - Positive feedback about playing dungeons is closely tied to the strength of System A.
