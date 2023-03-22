@@ -9,22 +9,20 @@
 
 2. Identify Key Metrics
     - Determine which metric(s) are impacting low revenue
-3. Analyze In-Game Metrics
+3. Determine Retention-related In-Game Metrics by EDA
     - Identify relevant in-game metrics that contribute to retention performance
 
 4. Identify Behavioral Patterns
-    - Analyze user behavior data to identify patterns associated with good performance
+    - Analyze user behavior data to identify patterns associated with good in-game performance
     
 5. Generate Insights from Hypotheses and Validation
-    - Develop actionable strategies to improve revenue performance based on insights gained from analysis and testing
+    - Identify the reason of good in-game performance with the insights from hypothesis
 
 6. A/B Tests Proposal
-
-    - Propose A/B tests to validate hypotheses and measure impact on retention performance
-Analyze Results
+    - Propose A/B tests to validate hypotheses 
 
 6. Conclusions 
-    - Summarize key findings and recommendations for future analysis and experimentation to continue improving revenue performance.
+    - Summarize key findings and recommendations for future strategies
 
 
 # Assess Product Performance
@@ -76,8 +74,8 @@ From the following picture we can see:
 
 As we can see from following picture:
 
-- The retention rate of our product is **lower** than competitors, especially in $R1$ (35%).
-- However, there is no big difference between our proudct and competitors in DNU.
+- The retention rate of our product is **lower** than benchmarks, especially in $R1$ (35%).
+- However, there is no big difference between our proudct and benchmarks in DNU.
 - So the problem of low AU comes from low Retention, especially in the first day, $R1$.
 
 
@@ -99,10 +97,10 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 ## Summary:
 
-Retention contributes to low revenue.
+Retention, especially $R1$, contributes to low revenue.
     
 
-# Analyze In-Game Metrics Related to Retention
+# Determine Retention-related In-Game Metrics by EDA
 
 To identify which user behavior metrics are related to retention, I will analyze several metrics and determine which of them have a correlation with retention
 
@@ -123,7 +121,7 @@ To identify which user behavior metrics are related to retention, I will analyze
 
 - The final level shows where do users stop playing.
 - Insight:
-    - Most of the churn user stopped playing before level 7.
+    - Most of the churn user stop playing before level 7.
     - The final level of most retained user is exceed level 27.
     - This would be a suitable metric for evaluating user performance.
 
@@ -196,9 +194,9 @@ To identify which user behavior metrics are related to retention, I will analyze
 - The users reached this status in the first day called "retained-status users"
 
 
-## Check whether the metric match our target(higher retention rate)
+## Check whether the metric match our goal(higher retention rate)
 
-Following picture shows that the users filtered out by the metirc perform better than the benchmark.
+Following picture shows that the retained status users perform better than the benchmark.
 
 <img src="https://user-images.githubusercontent.com/113814545/226520687-e920cef1-b672-4d9d-89be-d9b645973bf2.png" width="500">
 
@@ -206,7 +204,7 @@ Following picture shows that the users filtered out by the metirc perform better
 
 # Identify Behavioral Patterns
 
-- In this project, the good in-game performance is defined with level >=26 and dungeon times >= 7
+- In this project, the good in-game performance is defined with final level >=26 and dungeon times >= 7
  
 - The behavior that related with the performance is found by implementing correlation analysis.
 
@@ -230,7 +228,7 @@ Following picture shows that the users filtered out by the metirc perform better
 ## Validation
 
 - The contingency table of reaching retained status and system A strengthen is following:
-    - recalled reatined status is: (max_level = 26) and (dungeon_times = 7) in first-engaged day
+    - recalled reatined status is: (final_level = 26) and (dungeon_times = 7) in first-engaged day
     - be caution the data only reflects the trend since confidential rule
 
 |             | Reach retained status  | No reach retained status |
@@ -331,7 +329,7 @@ Following picture shows that the users filtered out by the metirc perform better
     - increase: system B may provide better feedback then system A
 
 
-# Conclusions and Recommendations
+# Conclusions
 
 1. The strengthen in system A is important for users to keep playing.
 2. The strengthen will give good feedback on dungeon playing in return.
