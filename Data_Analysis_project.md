@@ -41,7 +41,7 @@ To investigate the reason for low revenue, I will analyze the metrics to determi
 
    
 - Revenue can be decomposed to: 
-$$Revenue = AU \times ARPU$$
+$$Revenue = ARPU \times AU$$
 
 
 
@@ -61,7 +61,7 @@ $$AU = DNU\times R $$
 From the following picture we can see:
    - ARPU nearly equls to the average ARPU of industry benchmarks.
    - AU is way lower than the average AU of industry benchmarks.
-   - So AU would be the major problem of result in low revenue.
+   - So AU would be the major problem of low revenue.
   
 
 
@@ -80,15 +80,13 @@ As we can see from following picture:
 
 
 
-
-
-<img src="https://user-images.githubusercontent.com/113814545/226542444-2d388b50-9a43-471b-a2ba-dc27c116c8aa.png" width="900">
+<img src="https://user-images.githubusercontent.com/113814545/227104697-e6ff818c-da5c-4951-bcfc-68490b7bbd86.png" width="900">
 
 
 
-'0' in left panel means the launch date.
+'0' means the launch date.
 
-'1' in left panel means 1 days after launching.
+'1' 1 days after launching.
 
 R1 = 35% means there is 35% of user returns in the second day.
 
@@ -97,7 +95,7 @@ R2 = 25% means there is 25% of user returns in the third day relative to the lau
 
 ## Summary:
 
-Retention, especially $R1$, contributes to low revenue.
+Retention, especially $R1$, is the problem of low revenue.
     
 
 # Determine Retention-related In-Game Metrics by EDA
@@ -110,10 +108,10 @@ To identify which user behavior metrics are related to retention, I will analyze
 
 
 - For games, following metrics indicate the performance 
-    - character level
+    - character final level
     - time spent
     - money spent
-    - dungeon times 
+    - dungeon play times 
 
 
 
@@ -122,13 +120,15 @@ To identify which user behavior metrics are related to retention, I will analyze
 - The final level shows where do users stop playing.
 - Insight:
     - Most of the churn user stop playing before level 7.
-    - The final level of most retained user is exceed level 27.
+    - The median final level of retained user is level 26.
     - This would be a suitable metric for evaluating user performance.
 
 
 
 
- <img src="https://user-images.githubusercontent.com/113814545/224939335-0e5773a9-f771-4cd6-9e73-6d9f4ce7c4e8.png" width="750">
+<img src="https://user-images.githubusercontent.com/113814545/227104859-2de0f509-85d8-48cc-a90a-33b018bed8ee.png" width="750">
+
+
 
 
 
@@ -157,26 +157,22 @@ To identify which user behavior metrics are related to retention, I will analyze
 - Insights:
     - As we expected, almost all churn users didn't pay.
     - However, most of retained users didn't pay, too.
-    - This metric is not good to stand for the user performance.
+    - This metric is not good for the user performance.
 
 
 <img src="https://user-images.githubusercontent.com/113814545/226516805-b1ee51a7-f1fe-4de9-9ffa-9bc048b796b6.png    " width="450">
 
 
+## Dungeon play times
 
-
-
-
-## Dungeon times
-
-- Dungeon times has the potential since it is the main content in early stage.
+- Dungeon play times has the potential since it is the main content in early stage.
 - Insights:
-    - Most churn player didn't play dungeon before leaving.
+    - The median dungeon play times of churn users is 2 times.
+    - The median dungeon play times of retained player is 7.
     - Retained player reach a high dungeon times(upper limit in first day).
-    - This makes sense because the dungeons are unavoidable during leveling.
     - This would be a suitable metric.
 
-<img src="https://user-images.githubusercontent.com/113814545/226525540-6de5353a-e44d-47b0-9064-a9cfe31955cb.png" width="500">
+<img src="https://user-images.githubusercontent.com/113814545/227105434-fe0d9530-55fb-4336-813c-47f96f19b122.png" width="500">
 
 
 
@@ -285,7 +281,7 @@ Following picture shows that the retained status users perform better than the b
     2. 14% of them reach the strengthen part.
         - there are several funnels, here I only list the major one
     
-<img src="https://user-images.githubusercontent.com/113814545/226876797-9d266256-c4dc-4af7-a97f-f1baab65f445.png" width="750">
+<img src="https://user-images.githubusercontent.com/113814545/227106003-05eca188-6f47-4b32-aacc-1e89508d10ac.png" width="750">
 
 
 
@@ -293,12 +289,12 @@ Following picture shows that the retained status users perform better than the b
 ## Insights:
 
 - strengthen in system A is highly related with reaching the retained status.
-- The correlation coefficient is positve, which means strengthen more in system A will be more likely to reach retained status.
-- However, we can not conclude that the strengthen on system A is the reason for coming back in next day.
+- The correlation coefficient is positve, which means strengthen more on system A will be more likely to reach retained status.
+- However, we can not conclude that the strengthen on system A is the reason of good retention.
 
 - Users who churned had negative feedback about playing dungeons compared to retained users.
-- Positive feedback about playing dungeons is closely tied to the strength of System A.
-- The layout design is hindering some users from discovering the strengthen aspect of System A.
+- Positive feedback about playing dungeons is closely tied to the strength of system A.
+- The layout design is hindering some users from discovering the strengthen aspect of system A.
 
 
 
@@ -307,30 +303,47 @@ Following picture shows that the retained status users perform better than the b
 
 # A/B Tests Proposal
 
-## System A strengthen test
-- For testing the influence of strengthen on system A:
+Here is some proposal for checking the results we have, and testing even further to understand the underlying reason of users churn.
+
+## Whether layout design is the problem of low retention
+- For checking the reason of low revenue comes from fewer users knowing how to strengthen system A
+    - Controal group: keep the original setting
+    - Treatment group: increase the visibility by adjust the layout, such as elinimate layout_3
+
+- If the retention
+    - decrease: strengthen system A is not the reason
+    - same: users strengthen system A is not the reason
+    - increase: strengthen system A is the reason
+
+## Whether strengthen system A bring good retention
+- For testing the influence of strengthening system A:
     - Control group: keep the original setting
     - Treatment group: reduce the resource for system A by half
 
 - If the retention
-    - decrease: system A is important
+    - decrease: system A is important to retention
     - same: system A is nothing to do with retention
     - increase: system A affects the retention negatively
 
 
-## System A replacement test
+## Whether the retention relies on the feedback specific from system A
 - For testing whether other system can replace system A if it can bring good feedback:
     - Control group: keep the original setting
     - Treatment group: replace the ability contribution of system A by system B
+        - also adjust the user journey for sytem B
 
 - If the retention
-    - decrease: system A is special
-    - same: users chasing good feedback no matter which system is
+    - decrease: system A is special for users to keep playing
+    - same: users are chasing good feedback no matter which system is
     - increase: system B may provide better feedback then system A
+
+
 
 
 # Conclusions
 
-1. The strengthen in system A is important for users to keep playing.
-2. The strengthen will give good feedback on dungeon playing in return.
-3. The layout design would be the major problem for users to find out the strengthen part of system A.
+The conlusion here do not cover the A/B test result, just summary the analysis results.
+
+1. The layout design would be the major problem for users to find out the strengthen part of system A.
+2. Users can get good feedback when playing dungeons by strengthening system A.
+3. For understanding the reason of low retention, A/B test is necessary.
