@@ -227,6 +227,8 @@ Following picture shows that the retained status users perform better than the b
     - recalled reatined status is: (final_level = 26) and (dungeon_times = 7) in first-engaged day
     - be caution the data only reflects the trend since confidential rule
 
+- $H_0$: Reach retained status is nothing related with the strengthen in system A
+
 |             | Reach retained status  | No reach retained status |
 |-------------|:-----------:|:--------------:|
 | Low strength. in system A |    67     |     2529      |
@@ -235,7 +237,7 @@ Following picture shows that the retained status users perform better than the b
 
 
 - p-value = 1.867e-188 < 0.05, the null hypothesis is rejected
-    - system_A_strengthen is significant associated with reaching retained status
+- That is, system_A_strengthen is significant associated with reaching retained status
 
 
 
