@@ -216,27 +216,42 @@ Following picture shows that the retained status users perform better than the b
 - The behavior highly correlated with retained status is 'system_A_strengthen'
 
 
+## System A strengthen distribution
+
+
+Following plot shows the distribution of system A strengthen times.
+
+<img src="https://user-images.githubusercontent.com/113814545/228191235-cbd59b8a-4fea-43fc-afb1-a2920e909004.png" width="550">
+
+
+
 # Generate Insights from Hypotheses and Validation
 
 ## Hypothesis
-- Players who strength more in system A would be more likely to reach the retained status
+- Users who strength in system A would be more likely to reach the retained status
 
 ## Validation
+### Category users
+- The users is labeled by 'No strengthen in system A' if their strengthen in system A is 0
+- The users is labeled by 'Do strengthen in system A' if their strengthen in system A is not 0
+- The users is labeled by 'Reach retained status' if their final_level = 26 and dungeon_times = 7
+- The users is labeled by 'No reach retained status' if their final_level < 26 or dungeon_times <7
+
+### Null hypothesis and p-value
+- $H_0$: Reach retained status is nothing related with the strengthen in system AThus
 
 - The contingency table of reaching retained status and system A strengthen is following:
-    - recalled reatined status is: (final_level = 26) and (dungeon_times = 7) in first-engaged day
-    - be caution the data only reflects the trend since confidential rule
 
-- $H_0$: Reach retained status is nothing related with the strengthen in system A
+
 
 |             | Reach retained status  | No reach retained status |
 |-------------|:-----------:|:--------------:|
-| Low strength. in system A |    67     |     2529      |
-| High strength. in system A|   158     |     166      |
+| No strengthen in system A |    67     |     252      |
+| Do strengthen in system A|   158     |     166      |
 
 
 
-- p-value = 1.867e-188 < 0.05, the null hypothesis is rejected
+- p-value =  2.93e-13 < 0.05, the null hypothesis is rejected
 - That is, system_A_strengthen is significant associated with reaching retained status
 
 
