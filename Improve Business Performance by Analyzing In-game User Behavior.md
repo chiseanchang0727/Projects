@@ -2,6 +2,9 @@
 # Improve Business Performance by Analyzing In-game User Behavior
 
 
+Caution: Because of the confidential rule, all the data is not the real case but only reflect the trend.
+
+
 # Outlines
 
 1. Assess Product Performance
