@@ -9,6 +9,8 @@ def calculate_date_difference():
     current_date = date.today()
     day_difference = (current_date - input_date).days
     result_label.config(text=f"Day difference of last Daily Plan execution: {day_difference}")
+    # Close the application
+    app.destroy()  
 
 def update_date_input():
     if use_today.get():
