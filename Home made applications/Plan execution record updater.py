@@ -57,11 +57,11 @@ app = tk.Tk()
 app.title('Daily Plan Checker')
 
 # Create widgets
-instruction_label = ttk.Label(app, text="Enter a date (YYYY-MM-DD):")
+instruction_label = ttk.Label(app, text="Click the checkbox for updating the execution date:")
 
 var = tk.BooleanVar()
 
-check_button = ttk.Checkbutton(app, text="Update Date", variable=var, command=update_date)
+check_button = ttk.Checkbutton(app, text="Yes! I made it!", variable=var, command=update_date)
 check_button.grid(column=0, row=0, padx=10, pady=10)
 
 # Position the widgets on the window
