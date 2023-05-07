@@ -10,17 +10,18 @@ def update_date():
     if var.get():
         record = pd.read_csv('D:/github/Projects/Home made applications/daily_plan_execution_record.csv')
         
-        current_date= datetime.now().strftime('%Y-%m-%d')
+        current_date= datetime.now().date()
         
-        if record.iloc[-1]['execution_date'] < current_date:
+        if pd.to_datetime(record.iloc[-1]['execution_date']).date() < current_date:    
 
             last_execution_date = record.iloc[-1]['execution_date']
-            last_execution_date
+            
             df_date = pd.DataFrame({'execution_date' : [current_date] , 'last_execution_date' : [last_execution_date]})
+                       
             df_date['day_diff_last_execution_date'] = (pd.to_datetime(df_date['execution_date']) - pd.to_datetime(df_date['last_execution_date'])).dt.days - 1
 
             record_2 = pd.concat([record, df_date], axis= 0)
-            
+                       
             record_2.to_csv('D:/github/Projects/Home made applications/daily_plan_execution_record.csv', index=False)
             var.set(False)
             
