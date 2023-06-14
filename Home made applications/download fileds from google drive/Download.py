@@ -23,7 +23,7 @@ def authenticate():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'D:/github/Projects/Home made applications/download fileds from google drive/credentials.json', SCOPES)
+                '../credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.json', 'w') as token:
@@ -39,9 +39,9 @@ def download_files():
     folder_id = "19jM9zjYHARRMYzbYuMwjyC5BxgQpnJwg"
     
     # Specify the destination directory
-    destination_directory = "D:/github/Projects/Home made applications/download fileds from google drive"
+    destination_directory = "  "
     
-    # Query the files in the specific folder
+    # Query the files in the specific folder    
     query = f"'{folder_id}' in parents"
     results = service.files().list(q=query, pageSize=10).execute()
     items = results.get('files', [])
