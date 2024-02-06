@@ -51,3 +51,5 @@ if __name__ == '__main__':
     database_name = 'generaldb'
     connection_string = f'mysql+pymysql://{username}:{password}@{hostname}/{database_name}'
     export_data(df_concat, connection_string, 'port_activity', 'replace')
+    
+    print(f'Port activity data is updated, final date is {df_concat.date.max()}.')
